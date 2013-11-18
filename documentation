@@ -1,0 +1,6 @@
+xml-parse takes one argument of xml file to convert it into trectext format. 
+id parameter can be name or id #. 
+index.sh indexes the input trectext file based on id # in id file.
+
+for querying:
+create xml format with query type & index id
