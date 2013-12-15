@@ -23,16 +23,25 @@ $old_path = getcwd();
 chdir('/var/www/indri/');
 $output = shell_exec('./index.sh');
 chdir($old_path);
+
+echo "<br/><a href = 'query.php'>Query</a>";
 }
 if($_GET['type']=='ui_query')
 {
 	$id=$_POST['id'];
 	$op=$_POST['op'];
+	preg_replace('/\D/', '', $id);
 	if($op=='stats')
 	{
 		$output=shell_exec('./indri/dumpindex ./index/id_'.$id.' stats');
 		echo "<pre>$output</pre>";
 	}
+	if($op=='vocab')
+	{
+		$output=shell_exec('./indri/dumpindex ./index/id_'.$id.' vocabulary');
+		echo "<pre>$output</pre>";
+	}
+	echo "<a href = 'query.php'>Return</a>";
 }
 ?>
 
